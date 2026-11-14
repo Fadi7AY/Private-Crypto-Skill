@@ -1,0 +1,14 @@
+//@version=6
+indicator("Spot EMA RSI ATR research", overlay=true)
+fast=ta.ema(close,20)
+slow=ta.ema(close,50)
+rsi=ta.rsi(close,14)
+atr=ta.atr(14)
+buy=barstate.isconfirmed and ta.crossover(fast,slow) and rsi>=45 and rsi<=70 and atr>0
+sell=barstate.isconfirmed and ta.crossunder(fast,slow)
+plot(fast,color=color.orange)
+plot(slow,color=color.blue)
+plotshape(buy,title="Buy research",style=shape.triangleup,location=location.belowbar,color=color.green)
+plotshape(sell,title="Sell research",style=shape.triangledown,location=location.abovebar,color=color.red)
+alertcondition(buy,title="Research buy",message='{"schema":"spot-research-v1","action":"buy","ticker":"{{ticker}}","time":"{{time}}","close":"{{close}}"}')
+alertcondition(sell,title="Research sell",message='{"schema":"spot-research-v1","action":"sell","ticker":"{{ticker}}","time":"{{time}}","close":"{{close}}"}')

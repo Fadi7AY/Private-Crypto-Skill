@@ -1,0 +1,2 @@
+# TradingView — analysis, no execution
+Paste Pine source into TradingView Pine Editor; add indicator; choose a named alert condition and "Once Per Bar Close". Alert JSON includes public chart values only. Never include API keys or secrets. **No webhook server or live order endpoint is implemented.** Check duplicate signals, replay, delayed alerts, precision, clock skew and exchange spot symbol mapping before any independent deployment. Pine and Python RSI/ATR initialization may differ: validate per-candle parity.
