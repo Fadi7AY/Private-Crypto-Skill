@@ -2,6 +2,18 @@
 
 Research-grade, **paper-only** spot trading toolkit. No exchange order placement, leverage, shorts, or API keys. No claim of profitability.
 
+## At a glance
+
+```mermaid
+flowchart LR
+    Fetch["Fetch candles"] --> CSV["CSV market data"]
+    CSV --> Analyze["Analyze signals"]
+    CSV --> Backtest["Backtest"]
+    CSV --> Paper["Paper snapshot"]
+    Risk["Risk sizing"] -. Research input .-> Paper
+```
+
+
 ## Setup
 Python >=3.10:
 ```bash
